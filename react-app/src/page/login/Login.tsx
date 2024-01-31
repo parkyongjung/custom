@@ -29,6 +29,8 @@ const SignInner = styled.div`
 `;
 
 const Login = () => {
+    // axios예시임
+    // req 따로 필요 없다 했으니 주소 받는 부분만 수정
     // const { data, loading, error } = useDataFetch<{ }>('/api/~~~');
 
     // if (loading) {
@@ -51,14 +53,6 @@ const Login = () => {
                     </SignInner>
                 </SignWrap>
             </LoginWrap>
-            {/* {data && (
-        <ul>
-          {data.map((item) => (
-            <li key={item.id}></li>
-          ))}
-          skdjkalsdjklasjdklasjla
-        </ul>
-      )} */}
         </>
     );
 };
