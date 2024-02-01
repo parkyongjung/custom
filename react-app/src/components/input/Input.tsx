@@ -30,7 +30,7 @@ const InputError = styled.p`
     font-size: 14px;
     font-weight: 300;
     color: #ff0000;
-    margin-top: 20px;
+    margin-top: 15px;
 `;
 
 const Input = (props: InputProps) => {

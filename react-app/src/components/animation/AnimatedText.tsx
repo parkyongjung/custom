@@ -6,6 +6,7 @@ interface AnimatedTextWordProps {
     children?: React.ReactNode;
     color?: string;
     fontWeight?: string;
+    margin?: string;
 }
 
 interface AnimatedTextCharacterrops {
@@ -14,6 +15,7 @@ interface AnimatedTextCharacterrops {
     children?: React.ReactNode;
     color?: string;
     fontWeight?: string;
+    margin?: string;
 }
 
 export const AnimatedTextWord = (props: AnimatedTextWordProps) => {
@@ -56,6 +58,7 @@ export const AnimatedTextWord = (props: AnimatedTextWordProps) => {
                 fontSize: props.size,
                 fontWeight: props.fontWeight,
                 color: props.color,
+                margin: props.margin,
             }}
             variants={container}
             initial="hidden"
@@ -113,6 +116,7 @@ export const AnimatedTextCharacter = (props: AnimatedTextCharacterrops) => {
                 fontSize: props.size,
                 fontWeight: props.fontWeight,
                 color: props.color,
+                margin: props.margin,
             }}
             variants={container}
             initial="hidden"
