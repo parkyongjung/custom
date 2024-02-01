@@ -1,15 +1,12 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import { AnimatedTextCharacter } from 'components/animation/AnimatedText';
 import imgLogin from 'assets/images/img-login.jpg';
 import Input from 'components/input/Input';
 import Button from 'components/button/Button';
+import Modal from 'page/modal/Modal';
 
 // import useDataFetch from 'hooks/useDataFetch';
-
-const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('나는빡빡이다');
-};
-
 const Login = () => {
     // axios예시임
     // req 따로 필요 없다 했으니 주소 받는 부분만 수정
@@ -22,6 +19,16 @@ const Login = () => {
     // if (error) {
     //   return <p>Error: {error.message}</p>;
     // }
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+    };
 
     return (
         <>
@@ -43,11 +50,15 @@ const Login = () => {
                             />
                         </FormGroup>
                         <FormBtn>
-                            <Button text={'로그인'} onClick={handleClick} link="/mypage" />
+                            <Button text={'로그인'} onClick={openModal} />
                         </FormBtn>
                     </SignInner>
                 </SignWrap>
             </LoginWrap>
+
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <h2>테스트팝업</h2>
+            </Modal>
         </>
     );
 };
