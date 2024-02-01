@@ -255,6 +255,13 @@ textarea {
     touch-action: manipulation;
 }
 
+a,
+a:focus,
+a:active,
+a:hover {
+    text-decoration: none;
+}
+
 select {
     -webkit-appearance: none;
     -moz-appearance: none;

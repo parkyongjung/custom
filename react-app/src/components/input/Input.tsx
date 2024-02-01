@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 interface InputProps {
     placeholder?: string;
@@ -7,7 +7,9 @@ interface InputProps {
     type?: string;
     maxLength?: number;
     error?: string;
-    handleInputChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    value: string;
+    disabled?: boolean;
+    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const InputWrap = styled.div`
@@ -24,6 +26,14 @@ const InputStyle = styled.input<InputProps>`
     background-color: #fff;
     border-radius: 8px;
     color: #000;
+
+    ${(props) =>
+        props.disabled &&
+        css`
+            background-color: #eee;
+            color: #999;
+            cursor: not-allowed;
+        `}
 `;
 
 const InputError = styled.p`
@@ -34,6 +44,7 @@ const InputError = styled.p`
 `;
 
 const Input = (props: InputProps) => {
+    const handleChange = props.onChange && !props.disabled ? props.onChange : () => {};
     return (
         <>
             <InputWrap>
@@ -41,7 +52,8 @@ const Input = (props: InputProps) => {
                     type={props.type ? props.type : 'text'}
                     max-length={props.maxLength ? props.maxLength : ''}
                     placeholder={props.placeholder ? props.placeholder : '텍스트를 입력하세요.'}
-                    onChange={props.handleInputChange}
+                    onChange={handleChange}
+                    {...props}
                 />
                 {props.error && <InputError>{props.error}</InputError>}
             </InputWrap>

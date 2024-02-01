@@ -6,6 +6,52 @@ import Button from 'components/button/Button';
 
 // import useDataFetch from 'hooks/useDataFetch';
 
+const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    console.log('나는빡빡이다');
+};
+
+const Login = () => {
+    // axios예시임
+    // req 따로 필요 없다 했으니 주소 받는 부분만 수정
+    // const { data, loading, error } = useDataFetch<{ }>('/api/~~~');
+
+    // if (loading) {
+    //   return <p>Loading...</p>;
+    // }
+
+    // if (error) {
+    //   return <p>Error: {error.message}</p>;
+    // }
+
+    return (
+        <>
+            <LoginWrap>
+                <SideLogo />
+                <SignWrap>
+                    <SignInner>
+                        <AnimatedTextCharacter text="Custom Login" size="14px" fontWeight="300" color="#999" />
+                        <AnimatedTextCharacter text="커스텀 로그인" size="40px" fontWeight="700" margin="0 0 40px 0" />
+                        <FormGroup>
+                            <FormLabel>아이디</FormLabel>
+                            <Input error="아이디를 다시 입력해 주세요." value="" />
+                        </FormGroup>
+                        <FormGroup>
+                            <FormLabel>비밀번호</FormLabel>
+                            <Input
+                                error="비밀번호를 다시 입력해 주세요.(영문, 숫자, 특기호의 조합으로 8~16자리)"
+                                value=""
+                            />
+                        </FormGroup>
+                        <FormBtn>
+                            <Button text={'로그인'} onClick={handleClick} link="/mypage" />
+                        </FormBtn>
+                    </SignInner>
+                </SignWrap>
+            </LoginWrap>
+        </>
+    );
+};
+
 const LoginWrap = styled.div`
     display: flex;
     height: 100vh;
@@ -37,48 +83,15 @@ const FormGroup = styled.div`
     }
 `;
 
+const FormBtn = styled.div`
+    margin-top: 40px;
+`;
+
 const FormLabel = styled.label`
     display: block;
     font-size: 24px;
     font-weight: 500;
     margin-bottom: 15px;
 `;
-
-const Login = () => {
-    // axios예시임
-    // req 따로 필요 없다 했으니 주소 받는 부분만 수정
-    // const { data, loading, error } = useDataFetch<{ }>('/api/~~~');
-
-    // if (loading) {
-    //   return <p>Loading...</p>;
-    // }
-
-    // if (error) {
-    //   return <p>Error: {error.message}</p>;
-    // }
-
-    return (
-        <>
-            <LoginWrap>
-                <SideLogo />
-                <SignWrap>
-                    <SignInner>
-                        <AnimatedTextCharacter text="Custom Login" size="14px" fontWeight="300" color="#999" />
-                        <AnimatedTextCharacter text="커스텀 로그인" size="40px" fontWeight="700" margin="0 0 40px 0" />
-                        <FormGroup>
-                            <FormLabel>아이디</FormLabel>
-                            <Input error="아이디를 다시 입력해 주세요." />
-                        </FormGroup>
-                        <FormGroup>
-                            <FormLabel>비밀번호</FormLabel>
-                            <Input error="비밀번호를 다시 입력해 주세요.(영문, 숫자, 특기호의 조합으로 8~16자리)" />
-                        </FormGroup>
-                        <Button text={'로그인'} />
-                    </SignInner>
-                </SignWrap>
-            </LoginWrap>
-        </>
-    );
-};
 
 export default Login;
