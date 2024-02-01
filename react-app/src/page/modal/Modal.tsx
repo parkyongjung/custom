@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, createGlobalStyle } from 'styled-components';
 
 const fadeIn = keyframes`
   from {
@@ -7,6 +7,16 @@ const fadeIn = keyframes`
   }
   to {
     opacity: 1;
+  }
+`;
+
+interface GlobalStyleProps {
+    modalOpen: boolean;
+}
+
+const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
+  body {
+    overflow: ${(props) => (props.modalOpen ? 'hidden' : 'auto')};
   }
 `;
 
@@ -76,6 +86,7 @@ const Modal = (props: BouncingModalProps) => {
 
     return (
         <>
+            <GlobalStyle modalOpen={isVisible} />
             {props.isOpen && (
                 <ModalContainer style={{ display: isVisible ? 'flex' : 'none' }}>
                     <ModalContent>
